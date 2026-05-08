@@ -1,13 +1,438 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
-import Navbar from "../components/layout/Navbar.astro";
-import Hero from "../components/sections/Hero.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { asset } from "../lib/assets";
+const technologies = [
+  "Python",
+  "TensorFlow",
+  "OpenCV",
+  "C++",
+  "STM32",
+  "ESP32",
+  "Docker",
+  "Linux"
+];
+
+const quickLinks = [
+  {
+    title: "Projects",
+    href: "/projects",
+    description: "Research, AI and embedded systems."
+  },
+  {
+    title: "Research",
+    href: "/research",
+    description: "Papers, technical reports and publications."
+  },
+  {
+    title: "Experience",
+    href: "/experience",
+    description: "Industrial and academic background."
+  }
+];
 ---
 
-<MainLayout title="Pol Ballesteros">
+<BaseLayout
+  title="Pol Ballesteros | AI Engineer"
+  description="Technical portfolio focused on artificial intelligence, embedded systems and applied research."
+>
 
-  <Navbar />
+  <main>
 
-  <Hero />
+    <!-- HERO -->
 
-</MainLayout>
+    <section class="container-base py-28">
+
+      <div class="max-w-4xl">
+
+        <p class="text-sm uppercase tracking-[0.25em] text-text-secondary mb-6">
+          Artificial Intelligence • Embedded Systems • Research
+        </p>
+
+        <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-8">
+
+          Pol Ballesteros Quiroga
+
+        </h1>
+
+        <p class="text-xl text-text-secondary leading-relaxed max-w-3xl mb-10">
+
+          Electronic engineer and AI master's student focused on
+          machine learning, embedded systems, IoT architectures,
+          computer vision and propagation analysis.
+
+        </p>
+
+        <!-- CTA -->
+
+        <div class="flex flex-wrap gap-4">
+
+          <a
+            href="/projects"
+            class="
+              bg-accent
+              hover:bg-accent-hover
+              transition-colors
+              px-6 py-3
+              rounded-xl
+              font-medium
+            "
+          >
+            View Projects
+          </a>
+
+          <a
+            href={asset("/documents/CV_Pol_Ballesteros.pdf")}
+            target="_blank"
+            class="
+              border border-border
+              hover:border-accent
+              transition-colors
+              px-6 py-3
+              rounded-xl
+              font-medium
+            "
+          >
+            Download CV
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- TECHNOLOGIES -->
+
+    <section class="container-base pb-24">
+
+      <div class="mb-10">
+
+        <h2 class="text-3xl font-semibold mb-4">
+          Core Technologies
+        </h2>
+
+        <p class="text-text-secondary max-w-2xl">
+          Technologies used in machine learning,
+          embedded systems, scientific development and
+          industrial applications.
+        </p>
+
+      </div>
+
+      <div class="flex flex-wrap gap-3">
+
+        {
+          technologies.map((tech) => (
+            <span
+              class="
+                px-4 py-2
+                rounded-lg
+                bg-card
+                border border-border
+                text-sm text-text-secondary
+              "
+            >
+              {tech}
+            </span>
+          ))
+        }
+
+      </div>
+
+    </section>
+
+    <!-- FEATURED PROJECT -->
+
+    <section class="container-base pb-24">
+
+      <div class="mb-10">
+
+        <h2 class="text-3xl font-semibold mb-4">
+          Featured Research Project
+        </h2>
+
+        <p class="text-text-secondary max-w-2xl">
+          AI-assisted propagation analysis system
+          for LoRa and wireless communication environments.
+        </p>
+
+      </div>
+
+      <article class="
+        bg-card
+        border border-border
+        rounded-card
+        overflow-hidden
+      ">
+
+        <div class="grid lg:grid-cols-2">
+
+          <!-- IMAGE -->
+
+          <div class="min-h-[320px] bg-slate-900">
+
+            <img
+              src="/images/projects/lora/main.webp"
+              alt="LoRa AI Propagation"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+
+          </div>
+
+          <!-- CONTENT -->
+
+          <div class="p-8 flex flex-col justify-between">
+
+            <div>
+
+              <div class="flex flex-wrap gap-2 mb-6">
+
+                <span class="
+                  px-3 py-1
+                  rounded-lg
+                  bg-slate-800
+                  text-sm text-slate-300
+                ">
+                  Machine Learning
+                </span>
+
+                <span class="
+                  px-3 py-1
+                  rounded-lg
+                  bg-slate-800
+                  text-sm text-slate-300
+                ">
+                  Computer Vision
+                </span>
+
+                <span class="
+                  px-3 py-1
+                  rounded-lg
+                  bg-slate-800
+                  text-sm text-slate-300
+                ">
+                  IoT
+                </span>
+
+              </div>
+
+              <h3 class="text-3xl font-semibold mb-6">
+                LoRa Propagation AI
+              </h3>
+
+              <p class="text-text-secondary leading-relaxed mb-8">
+
+                Predictive propagation platform using
+                computer vision, geospatial analysis and
+                machine learning to estimate wireless
+                signal behavior in urban environments.
+
+              </p>
+
+              <div class="grid grid-cols-2 gap-6 mb-8">
+
+                <div>
+
+                  <p class="text-3xl font-bold mb-2">
+                    92%
+                  </p>
+
+                  <p class="text-sm text-text-secondary">
+                    Prediction Accuracy
+                  </p>
+
+                </div>
+
+                <div>
+
+                  <p class="text-3xl font-bold mb-2">
+                    CNN
+                  </p>
+
+                  <p class="text-sm text-text-secondary">
+                    Vision Architecture
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- LINKS -->
+
+            <div class="flex flex-wrap gap-4">
+
+              <a
+                href="/projects/lora-propagation-ai"
+                class="
+                  bg-accent
+                  hover:bg-accent-hover
+                  transition-colors
+                  px-5 py-3
+                  rounded-xl
+                  font-medium
+                "
+              >
+                View Project
+              </a>
+
+              <a
+                href="https://github.com/polbq"
+                target="_blank"
+                class="
+                  border border-border
+                  hover:border-accent
+                  transition-colors
+                  px-5 py-3
+                  rounded-xl
+                  font-medium
+                "
+              >
+                GitHub
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    </section>
+
+    <!-- QUICK ACCESS -->
+
+    <section class="container-base pb-32">
+
+      <div class="mb-10">
+
+        <h2 class="text-3xl font-semibold mb-4">
+          Technical Sections
+        </h2>
+
+        <p class="text-text-secondary max-w-2xl">
+          Quick access to projects,
+          publications and technical experience.
+        </p>
+
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+
+        {
+          quickLinks.map((item) => (
+
+            <a
+              href={asset(item.href)}
+              class="
+                bg-card
+                border border-border
+                hover:border-accent
+                transition-colors
+                rounded-card
+                p-6
+              "
+            >
+
+              <h3 class="text-xl font-semibold mb-4">
+                {item.title}
+              </h3>
+
+              <p class="text-text-secondary leading-relaxed">
+                {item.description}
+              </p>
+
+            </a>
+
+          ))
+        }
+
+      </div>
+
+    </section>
+
+    <!-- CONTACT CTA -->
+
+    <section class="container-base pb-32">
+
+      <div class="
+        border border-border
+        rounded-card
+        p-10
+        bg-card
+      ">
+
+        <div class="max-w-3xl">
+
+          <h2 class="text-3xl font-semibold mb-6">
+            Research and Technical Collaboration
+          </h2>
+
+          <p class="text-text-secondary leading-relaxed mb-8">
+
+            Open to opportunities related to
+            machine learning, embedded systems,
+            research projects and applied AI development.
+
+          </p>
+
+          <div class="flex flex-wrap gap-4">
+
+            <a
+              href={asset("/contact")}
+              class="
+                bg-accent
+                hover:bg-accent-hover
+                transition-colors
+                px-6 py-3
+                rounded-xl
+                font-medium
+              "
+            >
+              Contact
+            </a>
+
+            <a
+              href="https://github.com/polbq"
+              target="_blank"
+              class="
+                border border-border
+                hover:border-accent
+                transition-colors
+                px-6 py-3
+                rounded-xl
+                font-medium
+              "
+            >
+              GitHub
+            </a>
+
+            <a
+              href="https://gitlab.com/"
+              target="_blank"
+              class="
+                border border-border
+                hover:border-accent
+                transition-colors
+                px-6 py-3
+                rounded-xl
+                font-medium
+              "
+            >
+              GitLab
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</BaseLayout>

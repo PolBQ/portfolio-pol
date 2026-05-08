@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageLayout from "../../layouts/PageLayout.astro";
+---
+
+<BaseLayout title="Skills">
+
+  <PageLayout
+    title="Technical Skills"
+    subtitle="Technologies, frameworks and development tools."
+  >
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <div>
+        <h2 class="text-xl font-semibold mb-4">
+          Programming
+        </h2>
+
+        <ul class="space-y-2 text-slate-400">
+          <li>Python</li>
+          <li>C++</li>
+          <li>C#</li>
+          <li>SQL</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold mb-4">
+          AI & Data
+        </h2>
+
+        <ul class="space-y-2 text-slate-400">
+          <li>TensorFlow</li>
+          <li>OpenCV</li>
+          <li>Pandas</li>
+          <li>Machine Learning</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold mb-4">
+          Embedded
+        </h2>
+
+        <ul class="space-y-2 text-slate-400">
+          <li>ESP32</li>
+          <li>STM32</li>
+          <li>Arduino</li>
+          <li>Linux</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </PageLayout>
+
+</BaseLayout>

@@ -1,41 +1,171 @@
 ---
-import { getCollection } from "astro:content";
-import MainLayout from "../../layouts/MainLayout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+import {
+  getCollection,
+  render
+} from "astro:content";
 
 export async function getStaticPaths() {
+
   const projects = await getCollection("projects");
 
   return projects.map((project) => ({
     params: {
-      slug: project.slug,
+      slug: project.slug
     },
+
     props: {
-      project,
-    },
+      project
+    }
   }));
 }
 
 const { project } = Astro.props;
 
-const { Content } = await project.render();
+const {
+  title,
+  description,
+  technologies,
+  github,
+  gitlab,
+  documentation,
+  gallery,
+  metrics
+} = project.data;
+
+const { Content } = await render(project);
 ---
 
-<MainLayout title={project.data.title}>
+<BaseLayout
+  title={title}
+  description={description}
+>
 
-  <section class="max-w-4xl mx-auto px-6 py-24">
+  <main>
 
-    <h1 class="text-5xl font-bold mb-6">
-      {project.data.title}
-    </h1>
+    <!-- HERO -->
 
-    <p class="text-zinc-400 mb-12">
-      {project.data.description}
-    </p>
+    <section class="container-base section-spacing">
 
-    <article class="prose prose-invert max-w-none">
-      <Content />
-    </article>
+      <div class="container-reading">
 
-  </section>
+        <h1 class="heading-xl mb-8">
+          {title}
+        </h1>
 
-</MainLayout>
+        <p class="text-xl text-secondary leading-relaxed">
+          {description}
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- TECHNOLOGIES -->
+
+    <section class="container-base pb-16">
+
+      <div class="flex flex-wrap gap-3">
+
+        {
+          technologies.map((tech: string) => (
+
+            <span class="badge-tech">
+              {tech}
+            </span>
+
+          ))
+        }
+
+      </div>
+
+    </section>
+
+    <!-- GALLERY -->
+
+    {
+      gallery && (
+
+        <section class="container-base pb-24">
+
+          <div class="
+            grid
+            md:grid-cols-2
+            gap-6
+          ">
+
+            {
+              gallery.map((image: string) => (
+
+                <img
+                  src={image}
+                  alt={title}
+                  class="
+                    rounded-card
+                    border
+                    border-border
+                  "
+                />
+
+              ))
+            }
+
+          </div>
+
+        </section>
+
+      )
+    }
+
+    <!-- METRICS -->
+
+    {
+      metrics && (
+
+        <section class="container-base pb-24">
+
+          <div class="
+            grid
+            md:grid-cols-3
+            gap-6
+          ">
+
+            <div class="card-base p-6">
+
+              <p class="text-3xl font-bold mb-3">
+                {metrics.accuracy ?? "--"}%
+              </p>
+
+              <p class="text-secondary">
+                Accuracy
+              </p>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      )
+    }
+
+    <!-- CONTENT -->
+
+    <section class="container-base pb-32">
+
+      <article class="
+        prose
+        prose-invert
+        max-w-none
+      ">
+
+        <Content />
+
+      </article>
+
+    </section>
+
+  </main>
+
+</BaseLayout>

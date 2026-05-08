@@ -3,8 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   site: "https://polbq.github.io",
-  base: "/portfolio-pol",
-
+  base: process.env.NODE_ENV === "production" ? "/portfolio-pol" : "",
   vite: {
     plugins: [tailwindcss()],
   },

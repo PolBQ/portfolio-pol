@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectGrid from "../../components/projects/ProjectGrid.astro";
+import ProjectFilters from "../../components/projects/ProjectFilters.astro";
+
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects");
+
+---
+
+<BaseLayout
+  title="Projects | Pol Ballesteros"
+  description="Technical projects related to AI, embedded systems and research."
+>
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="container-base section-spacing">
+
+      <div class="container-reading">
+
+        <p class="text-sm uppercase tracking-[0.25em] text-secondary mb-6">
+          Technical Portfolio
+        </p>
+
+        <h1 class="heading-xl mb-8">
+          Projects
+        </h1>
+
+        <p class="text-xl text-secondary leading-relaxed">
+
+          Research projects,
+          machine learning systems,
+          embedded platforms and
+          applied engineering development.
+
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- FILTERS -->
+
+    <section class="container-base pb-12">
+
+      <ProjectFilters />
+
+    </section>
+
+    <!-- GRID -->
+
+    <section class="container-base pb-32">
+
+      <ProjectGrid projects={projects} />
+
+    </section>
+
+  </main>
+
+</BaseLayout>

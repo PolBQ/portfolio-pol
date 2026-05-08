@@ -1,0 +1,36 @@
+---
+const stack = [
+  "Python",
+  "PyTorch",
+  "TensorFlow",
+  "ESP32",
+  "LoRaWAN",
+  "Docker",
+  "Linux",
+  "OpenCV",
+  "SQL",
+  "Arduino",
+  "STM32",
+  "Git"
+];
+---
+
+<section class="max-w-6xl mx-auto px-6 py-24">
+
+  <h2 class="text-4xl font-bold mb-12 text-white">
+    Tech Stack
+  </h2>
+
+  <div class="flex flex-wrap gap-4">
+
+    {
+      stack.map((tech) => (
+        <div class="bg-zinc-900 border border-zinc-800 px-5 py-3 rounded-xl text-zinc-300 hover:border-zinc-600 transition">
+          {tech}
+        </div>
+      ))
+    }
+
+  </div>
+
+</section>

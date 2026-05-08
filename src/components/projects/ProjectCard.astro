@@ -1,0 +1,97 @@
+---
+import type {
+  CollectionEntry
+} from "astro:content";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+
+const {
+  title,
+  description,
+  technologies,
+  cover,
+  status,
+  category
+} = project.data;
+---
+
+<a
+  href={`/projects/${project.id}`}
+  class="
+    card-base
+    overflow-hidden
+    block
+  "
+>
+
+  <!-- IMAGE -->
+
+  <div class="aspect-video bg-surface">
+
+    <img
+      src={cover}
+      alt={title}
+      class="
+        w-full
+        h-full
+        object-cover
+      "
+    />
+
+  </div>
+
+  <!-- CONTENT -->
+
+  <div class="p-6">
+
+    <!-- META -->
+
+    <div class="flex flex-wrap gap-2 mb-5">
+
+      <span class="badge-tech">
+        {category}
+      </span>
+
+      <span class="badge-tech">
+        {status}
+      </span>
+
+    </div>
+
+    <!-- TITLE -->
+
+    <h2 class="text-2xl font-semibold mb-4">
+      {title}
+    </h2>
+
+    <!-- DESCRIPTION -->
+
+    <p class="text-secondary leading-relaxed mb-6">
+      {description}
+    </p>
+
+    <!-- TECH -->
+
+    <div class="flex flex-wrap gap-2">
+
+      {
+        technologies
+          .slice(0, 4)
+          .map((tech: string) => (
+
+            <span class="badge-tech">
+              {tech}
+            </span>
+
+          ))
+      }
+
+    </div>
+
+  </div>
+
+</a>

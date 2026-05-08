@@ -1,0 +1,31 @@
+---
+
+const filters = [
+  "All",
+  "Machine Learning",
+  "Embedded",
+  "Research",
+  "IoT",
+  "Computer Vision"
+];
+---
+
+<div class="flex flex-wrap gap-3">
+
+  {
+    filters.map((filter) => (
+
+      <button class="
+        badge-tech
+        hover:border-accent
+        transition-colors
+      ">
+
+        {filter}
+
+      </button>
+
+    ))
+  }
+
+</div>

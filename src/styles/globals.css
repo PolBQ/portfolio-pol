@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+/* =========================
+   Base
+========================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #020617;
+  color: #E2E8F0;
+
+  font-family: 'Inter', sans-serif;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+
+  margin: 0;
+  padding: 0;
+}
+
+::selection {
+  background-color: #2563EB;
+  color: white;
+}
+
+/* =========================
+   Containers
+========================= */
+
+.container-base {
+  max-width: 1280px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.container-reading {
+  max-width: 900px;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =========================
+   Sections
+========================= */
+
+.section-spacing {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+/* =========================
+   Typography
+========================= */
+
+.heading-xl {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+
+  line-height: 1.05;
+
+  font-weight: 700;
+}
+
+.heading-lg {
+  font-size: 2.25rem;
+
+  line-height: 1.1;
+
+  font-weight: 600;
+}
+
+.text-secondary {
+  color: #94A3B8;
+}
+
+.text-muted {
+  color: #64748B;
+}
+
+/* =========================
+   Cards
+========================= */
+
+.card-base {
+  background-color: #111827;
+
+  border: 1px solid #1E293B;
+
+  border-radius: 1rem;
+
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.card-base:hover {
+  border-color: #2563EB;
+}
+
+/* =========================
+   Buttons
+========================= */
+
+.button-primary {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background-color: #2563EB;
+
+  color: white;
+
+  padding: 0.875rem 1.5rem;
+
+  border-radius: 0.875rem;
+
+  transition: background-color 0.2s ease;
+}
+
+.button-primary:hover {
+  background-color: #3B82F6;
+}
+
+.button-secondary {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #1E293B;
+
+  color: #E2E8F0;
+
+  padding: 0.875rem 1.5rem;
+
+  border-radius: 0.875rem;
+
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.button-secondary:hover {
+  border-color: #2563EB;
+}
+
+/* =========================
+   Badges
+========================= */
+
+.badge-tech {
+  background-color: #0F172A;
+
+  border: 1px solid #1E293B;
+
+  color: #CBD5E1;
+
+  padding: 0.45rem 0.9rem;
+
+  border-radius: 0.7rem;
+
+  font-size: 0.875rem;
+}
