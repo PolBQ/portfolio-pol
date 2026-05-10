@@ -50,7 +50,15 @@ export default function NeuralEdge(props: any) {
 
       {/* ANIMATED SIGNAL */}
 
-      <circle r="4" fill="#67e8f9">
+      <circle
+        r="4"
+        fill="#67e8f9"
+
+        style={{
+          filter:
+            "drop-shadow(0 0 6px #67e8f9)",
+        }}
+      >
         <animateMotion
           dur="3s"
           repeatCount="indefinite"

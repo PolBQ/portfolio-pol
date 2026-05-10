@@ -1,17 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { asset } from "../lib/assets";
-import TechNeuralMap from "../islands/TechNeuralMap.jsx";
-const technologies = [
-  { name: "Python", libs: "NumPy, pandas, scikit-learn, OpenCV, TensorFlow, Keras, OpenCV" },
-  { name: "C# /C++", libs: "Keras, TF Lite, TF Data, Model Optimization" },
-  { name: "OpenCV", libs: "cv2, dnn, imgproc, video" },
-  { name: "C++", libs: "STL, Boost, OpenMP, Embedded SDKs" },
-  { name: "STM32", libs: "HAL, LL, FreeRTOS, CubeMX" },
-  { name: "ESP32", libs: "ESP-IDF, Arduino, FreeRTOS, LWIP" },
-  { name: "Docker", libs: "Docker Compose, images, registries, volumes" },
-  { name: "Linux", libs: "Bash, systemd, networking, embedded toolchains" }
-];
+import TechSection from "../islands/TechSection";
 
 const quickLinks = [
   {
@@ -324,56 +314,9 @@ const quickLinks = [
           industrial applications.
         </p>
       </div>
-      <div class="flex flex-wrap gap-2">
-        {
-          technologies.map((tech) => (
-            <div class="relative group">
-              <span
-                class="
-                  px-4 py-2
-                  rounded-lg
-                  bg-card
-                  border border-border
-                  text-sm text-text-secondary
-                  transition-colors
-                  hover:bg-slate-900
-                  cursor-default
-                "
-              >
-                {tech.name}
-              </span>
-
-              <div class="
-                pointer-events-none
-                absolute
-                left-1/2
-                top-full
-                z-20
-                mt-2
-                w-max
-                min-w-[180px]
-                -translate-x-1/2
-                rounded-lg
-                bg-slate-900
-                border border-slate-700
-                px-3 py-2
-                text-xs text-slate-300
-                opacity-0
-                transition-opacity duration-200
-                group-hover:opacity-100
-              ">
-                {tech.libs}
-              </div>
-            </div>
-          ))
-        }
-
-      </div>
-
+      <TechSection client:load />
     </section>
-    <section>
-      <TechNeuralMap client:visible />
-    </section>
+
     <!-- FEATURED PROJECT -->
 
     <section class="container-base pb-24">

@@ -1,79 +1,95 @@
-import {
-  forceSimulation,
-  forceManyBody,
-  forceCenter,
-  forceLink,
-  forceCollide,
-  forceX,
-  forceY,
-} from "d3-force";
-
-const categoryPositions: Record<string, any> = {
-  ai: { x: 350, y: -200 },
-
-  embedded: { x: -350, y: 100 },
-
-  iot: { x: 300, y: 250 },
-
-  core: { x: 0, y: 0 },
-};
-
 export function generateNeuralLayout(
   nodes: any[],
-  edges: any[]
 ) {
-  const simulation = forceSimulation(nodes)
 
-    .force(
-      "charge",
-      forceManyBody().strength(-350)
-    )
+  const positions: Record<string, any> = {
 
-    .force(
-      "center",
-      forceCenter(0, 0)
-    )
+    // AI
 
-    .force(
-      "link",
-      forceLink(edges)
-        .id((d: any) => d.id)
-        .distance(120)
-    )
+    ai: {
+      x: -180,
+      y: -20,
+    },
 
-    .force(
-      "collision",
-      forceCollide(70)
-    )
+    python: {
+      x: -260,
+      y: 40,
+    },
 
-    // CATEGORY CLUSTERING
+    tensorflow: {
+      x: -140,
+      y: 70,
+    },
 
-    .force(
-      "x",
-      forceX((node: any) =>
-        categoryPositions[node.data.category]?.x || 0
-      ).strength(0.08)
-    )
+    opencv: {
+      x: -210,
+      y: 120,
+    },
 
-    .force(
-      "y",
-      forceY((node: any) =>
-        categoryPositions[node.data.category]?.y || 0
-      ).strength(0.08)
-    )
+    // EMBEDDED
 
-    .stop();
+    embedded: {
+      x: 180,
+      y: -10,
+    },
 
-  for (let i = 0; i < 400; i++) {
-    simulation.tick();
-  }
+    esp32: {
+      x: 120,
+      y: 60,
+    },
+
+    stm32: {
+      x: 240,
+      y: 80,
+    },
+
+    // IOT
+
+    iot: {
+      x: -100,
+      y: 170,
+    },
+
+    lora: {
+      x: -170,
+      y: 240,
+    },
+
+    mqtt: {
+      x: -40,
+      y: 250,
+    },
+
+    // BACKEND
+
+    backend: {
+      x: 170,
+      y: 170,
+    },
+
+    docker: {
+      x: 100,
+      y: 250,
+    },
+
+    linux: {
+      x: 190,
+      y: 260,
+    },
+
+    nginx: {
+      x: 280,
+      y: 240,
+    },
+  };
 
   return nodes.map((node) => ({
     ...node,
 
-    position: {
-      x: node.x || 0,
-      y: node.y || 0,
-    },
+    position:
+      positions[node.id] || {
+        x: 0,
+        y: 0,
+      },
   }));
 }

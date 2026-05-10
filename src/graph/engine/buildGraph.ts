@@ -15,10 +15,7 @@ export function buildNodes() {
       category: tech.category,
     },
 
-    type:
-      tech.category === "core"
-        ? "core"
-        : "technology",
+    type: "technology",
   }));
 
   return generateNeuralLayout(

@@ -1,9 +1,4 @@
 export const technologies = [
-  {
-    id: "core",
-    label: "POL",
-    category: "core",
-  },
 
   // AI
 
@@ -70,27 +65,35 @@ export const technologies = [
     label: "MQTT",
     category: "iot",
   },
+
+  // BACKEND
+
+  {
+    id: "backend",
+    label: "Backend",
+    category: "backend",
+  },
+
+  {
+    id: "docker",
+    label: "Docker",
+    category: "backend",
+  },
+
+  {
+    id: "linux",
+    label: "Linux",
+    category: "backend",
+  },
+
+  {
+    id: "nginx",
+    label: "Nginx",
+    category: "backend",
+  },
 ];
+
 export const relations = [
-  // CORE
-
-  {
-    id: "core-ai",
-    source: "core",
-    target: "ai",
-  },
-
-  {
-    id: "core-embedded",
-    source: "core",
-    target: "embedded",
-  },
-
-  {
-    id: "core-iot",
-    source: "core",
-    target: "iot",
-  },
 
   // AI
 
@@ -138,5 +141,25 @@ export const relations = [
     id: "iot-mqtt",
     source: "iot",
     target: "mqtt",
+  },
+
+  // BACKEND
+
+  {
+    id: "backend-docker",
+    source: "backend",
+    target: "docker",
+  },
+
+  {
+    id: "backend-linux",
+    source: "backend",
+    target: "linux",
+  },
+
+  {
+    id: "backend-nginx",
+    source: "backend",
+    target: "nginx",
   },
 ];
