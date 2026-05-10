@@ -1,15 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { asset } from "../lib/assets";
+import TechNeuralMap from "../islands/TechNeuralMap.jsx";
 const technologies = [
-  "Python",
-  "TensorFlow",
-  "OpenCV",
-  "C++",
-  "STM32",
-  "ESP32",
-  "Docker",
-  "Linux"
+  { name: "Python", libs: "NumPy, pandas, scikit-learn, OpenCV, TensorFlow, Keras, OpenCV" },
+  { name: "C# /C++", libs: "Keras, TF Lite, TF Data, Model Optimization" },
+  { name: "OpenCV", libs: "cv2, dnn, imgproc, video" },
+  { name: "C++", libs: "STL, Boost, OpenMP, Embedded SDKs" },
+  { name: "STM32", libs: "HAL, LL, FreeRTOS, CubeMX" },
+  { name: "ESP32", libs: "ESP-IDF, Arduino, FreeRTOS, LWIP" },
+  { name: "Docker", libs: "Docker Compose, images, registries, volumes" },
+  { name: "Linux", libs: "Bash, systemd, networking, embedded toolchains" }
 ];
 
 const quickLinks = [
@@ -39,61 +40,256 @@ const quickLinks = [
   <main>
 
     <!-- HERO -->
+    <section
+      class="
+        container-base
+        relative
+        overflow-hidden
+      "
+    >
 
-    <section class="container-base py-28">
+      <!-- BACKGROUND -->
 
-      <div class="max-w-4xl">
+      <div class="absolute inset-0 -z-10">
 
-        <p class="text-sm uppercase tracking-[0.25em] text-text-secondary mb-6">
-          Artificial Intelligence • Embedded Systems • Research
-        </p>
+        <div class="
+          absolute inset-0
+          bg-gradient-to-br
+          from-slate-950
+          via-slate-900
+          to-slate-950
+        "></div>
 
-        <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-8">
+        <div class="
+          absolute top-0 right-0
+          w-96 h-96
+          bg-blue-500/20
+          rounded-full
+          blur-3xl
+          opacity-30
+        "></div>
 
-          Pol Ballesteros Quiroga
+        <div class="
+          absolute bottom-0 left-0
+          w-72 h-72
+          bg-cyan-500/10
+          rounded-full
+          blur-3xl
+          opacity-20
+        "></div>
 
-        </h1>
+      </div>
 
-        <p class="text-xl text-text-secondary leading-relaxed max-w-3xl mb-10">
+      <!-- CONTENT -->
 
-          Electronic engineer and AI master's student focused on
-          machine learning, embedded systems, IoT architectures,
-          computer vision and propagation analysis.
+      <div
+        class="
+          relative
+          z-10
 
-        </p>
+          flex
+          flex-col
+          lg:flex-row
 
-        <!-- CTA -->
+          items-center
+          lg:items-center
 
-        <div class="flex flex-wrap gap-4">
+          justify-between
 
-          <a
-            href="/projects"
+          gap-8
+          lg:gap-16
+
+          py-10
+          lg:py-0
+
+          min-h-[235px]
+        "
+      >
+
+        <!-- LEFT -->
+
+        <div
+          class="
+            flex
+            flex-col
+            sm:flex-row
+
+            items-center
+            sm:items-center
+
+            text-center
+            sm:text-left
+
+            gap-5
+            lg:gap-6
+
+            w-full
+            lg:w-auto
+          "
+        >
+
+          <!-- IMAGE -->
+
+          <img
+            src="/images/me/PolBallesteros.jpeg"
+            alt="Pol Ballesteros"
             class="
-              bg-accent
-              hover:bg-accent-hover
-              transition-colors
-              px-6 py-3
-              rounded-xl
-              font-medium
+              w-24
+              h-24
+              lg:w-28
+              lg:h-28
+
+              rounded-full
+              object-cover
+
+              ring-2
+              ring-blue-500/30
+
+              flex-shrink-0
+            "
+          />
+
+          <!-- TEXT -->
+
+          <div>
+
+            <p
+              class="
+                mb-3
+
+                tracking-[0.18em]
+                uppercase
+
+                text-[10px]
+                sm:text-[11px]
+
+                text-slate-300
+              "
+            >
+              Artificial Intelligence • Embedded Systems • Research
+            </p>
+
+            <h1
+              class="
+                text-2xl
+                sm:text-3xl
+                lg:text-4xl
+
+                font-semibold
+
+                leading-[1.05]
+                tracking-tight
+
+                text-slate-100
+              "
+            >
+              Pol Alexander<br />
+              Ballesteros Quiroga
+            </h1>
+
+          </div>
+
+        </div>
+
+        <!-- RIGHT -->
+
+        <div
+          class="
+            flex
+            flex-col
+
+            items-center
+            lg:items-end
+
+            w-full
+            lg:w-auto
+          "
+        >
+
+          <!-- CTA -->
+
+          <div
+            class="
+              flex
+              flex-col
+              sm:flex-row
+
+              w-full
+              sm:w-auto
+
+              gap-3
             "
           >
-            View Projects
-          </a>
 
-          <a
-            href={asset("/documents/CV_Pol_Ballesteros.pdf")}
-            target="_blank"
-            class="
-              border border-border
-              hover:border-accent
-              transition-colors
-              px-6 py-3
-              rounded-xl
-              font-medium
-            "
-          >
-            Download CV
-          </a>
+            <a
+              href="/projects"
+              class="
+                bg-accent
+                hover:bg-accent-hover
+
+                transition
+                duration-150
+                ease-out
+                transform
+                hover:-translate-y-0.5
+                active:translate-y-0.5
+                active:scale-95
+
+                px-5
+                py-3
+
+                rounded-xl
+
+                text-sm
+                font-medium
+                text-white
+
+                text-center
+                focus:outline-none
+                focus:ring-2
+                focus:ring-blue-400/40
+              "
+            >
+              View Projects
+            </a>
+
+            <a
+              href={asset("/documents/CV_Pol_Ballesteros.pdf")}
+              target="_blank"
+              class="
+                border
+                border-border
+
+                hover:border-accent
+                hover:bg-slate-900/10
+
+                transition
+                duration-150
+                ease-out
+                transform
+                hover:-translate-y-0.5
+                active:translate-y-0.5
+                active:scale-95
+
+                px-5
+                py-3
+
+                rounded-xl
+
+                text-sm
+                font-medium
+                text-slate-100
+
+                text-center
+                focus:outline-none
+                focus:ring-2
+                focus:ring-blue-400/30
+              "
+            >
+              Download CV
+            </a>
+
+          </div>
 
         </div>
 
@@ -101,46 +297,83 @@ const quickLinks = [
 
     </section>
 
-    <!-- TECHNOLOGIES -->
-
     <section class="container-base pb-24">
-
       <div class="mb-10">
-
-        <h2 class="text-3xl font-semibold mb-4">
+        <h2 class="text-3xl font-semibold mb-4 mt-4">
+          About Me
+        </h2>
+        <p class="text-text-secondary max-w-6xl">
+          Electronic engineer and AI master's student focused on
+          machine learning, embedded systems, IoT architectures,
+          computer vision and propagation analysis.
+        </p>
+        <h2 class="text-3xl font-semibold mb-4 mt-4">
+          Education
+        </h2>
+        <p class="text-text-secondary max-w-6xl">
+          • Engineering Degree in Electronics, Universidad Privada del Valle (Cochabamba, Bolivia) - 2025<br />
+          • Diploma in Artificial Intelligence & Machine Learning, Universidad Privada Franz Tamayo (Cochabamba, Bolivia) - 2026<br />
+          • Master's Degree in Artificial Intelligence, Pontificia Universidad Católica de Chile (Santiago, Chile) - Present
+        </p>
+        <h2 class="text-3xl font-semibold mb-4 mt-4">
           Core Technologies
         </h2>
-
-        <p class="text-text-secondary max-w-2xl">
+        <p class="text-text-secondary max-w-6xl">
           Technologies used in machine learning,
           embedded systems, scientific development and
           industrial applications.
         </p>
-
       </div>
-
-      <div class="flex flex-wrap gap-3">
-
+      <div class="flex flex-wrap gap-2">
         {
           technologies.map((tech) => (
-            <span
-              class="
-                px-4 py-2
+            <div class="relative group">
+              <span
+                class="
+                  px-4 py-2
+                  rounded-lg
+                  bg-card
+                  border border-border
+                  text-sm text-text-secondary
+                  transition-colors
+                  hover:bg-slate-900
+                  cursor-default
+                "
+              >
+                {tech.name}
+              </span>
+
+              <div class="
+                pointer-events-none
+                absolute
+                left-1/2
+                top-full
+                z-20
+                mt-2
+                w-max
+                min-w-[180px]
+                -translate-x-1/2
                 rounded-lg
-                bg-card
-                border border-border
-                text-sm text-text-secondary
-              "
-            >
-              {tech}
-            </span>
+                bg-slate-900
+                border border-slate-700
+                px-3 py-2
+                text-xs text-slate-300
+                opacity-0
+                transition-opacity duration-200
+                group-hover:opacity-100
+              ">
+                {tech.libs}
+              </div>
+            </div>
           ))
         }
 
       </div>
 
     </section>
-
+    <section>
+      <TechNeuralMap client:visible />
+    </section>
     <!-- FEATURED PROJECT -->
 
     <section class="container-base pb-24">
