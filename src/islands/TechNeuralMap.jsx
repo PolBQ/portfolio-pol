@@ -35,7 +35,7 @@ export default function TechNeuralMap({
     useState(0.55);
 
   const [paddingLevel, setPaddingLevel] =
-    useState(0.1);
+    useState(0.02);
 
   useEffect(() => {
 
@@ -45,15 +45,15 @@ export default function TechNeuralMap({
 
       if (window.innerWidth < 640) {
 
-        setZoomLevel(0.42);
-        setPaddingLevel(0.8);
+        setZoomLevel(0.34);
+        setPaddingLevel(0.12);
 
       // TABLET
 
       } else if (window.innerWidth < 1024) {
 
-        setZoomLevel(0.52);
-        setPaddingLevel(0.02);
+        setZoomLevel(0.46);
+        setPaddingLevel(0.05);
 
       // DESKTOP
 
@@ -106,15 +106,16 @@ export default function TechNeuralMap({
 
         w-full
 
-        h-[260px]
-        sm:h-[340px]
-        lg:h-[420px]
+        h-[220px]
+        sm:h-[303px]
+        lg:h-[407px]
 
         overflow-hidden
         rounded-3xl
 
         bg-transparent
-        mb-[-230px]
+
+        mb-[-80px]
       "
     >
 
@@ -138,7 +139,7 @@ export default function TechNeuralMap({
           absolute
           inset-0
 
-          opacity-[0.06]
+          opacity-[0.05]
 
           bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)]
 
@@ -151,9 +152,6 @@ export default function TechNeuralMap({
       {/* FLOW SYSTEM */}
 
       <ReactFlow
-        style={{
-          transform: "translateY(-50px)",
-        }}
 
         nodes={nodes}
         edges={edges}

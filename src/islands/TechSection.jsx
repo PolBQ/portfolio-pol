@@ -3,29 +3,62 @@ import { useState } from "react";
 import TechNeuralMap
 from "./TechNeuralMap";
 
-const technologies = [
+const categories = [
+
   {
     name: "AI",
     category: "ai",
-    libs: "Python, TensorFlow, OpenCV",
+
+    libs:
+      "TensorFlow, Keras, OpenCV, CNN",
   },
 
   {
     name: "Embedded",
     category: "embedded",
-    libs: "ESP32, STM32, FreeRTOS",
+
+    libs:
+      "ESP32, STM32, FreeRTOS, SPI",
   },
 
   {
-    name: "IoT",
-    category: "iot",
-    libs: "LoRa, MQTT, Sensors",
+    name: "Telecom",
+    category: "telecom",
+
+    libs:
+      "LoRa, MQTT, RF, GPS",
   },
 
   {
-    name: "Backend",
-    category: "backend",
-    libs: "Docker, Linux, Nginx",
+    name: "Web",
+    category: "webinfra",
+
+    libs:
+      "Docker, Linux, Astro, React",
+  },
+
+  {
+    name: "Data",
+    category: "data",
+
+    libs:
+      "Pandas, NumPy, EDA",
+  },
+
+  {
+    name: "Robotics",
+    category: "robotics",
+
+    libs:
+      "PLC, PID, HMI",
+  },
+
+  {
+    name: "Electronics",
+    category: "electronics",
+
+    libs:
+      "PCB, ORCAD, Analog Design",
   },
 ];
 
@@ -37,19 +70,30 @@ export default function TechSection() {
   ] = useState(null);
 
   return (
+
     <section>
 
       {/* CATEGORY BUTTONS */}
 
-      <div className="flex flex-wrap gap-3">
+      <div
+        className="
+          flex
+          flex-wrap
 
-        {technologies.map((tech) => (
+          gap-3
+
+          mb-2
+        "
+      >
+
+        {categories.map((tech) => (
 
           <button
             key={tech.category}
 
             onClick={() =>
               setActiveCategory(
+
                 activeCategory === tech.category
                   ? null
                   : tech.category
@@ -76,16 +120,19 @@ export default function TechSection() {
 
               select-none
 
+              hover:scale-105
+
               ${
                 activeCategory === tech.category
 
                   ? `
-                    bg-[#d9dde4]
-                    border-[#111827]
+                    bg-[#e5e7eb]
+
+                    border-cyan-400
+
                     text-[#111827]
 
-                    scale-105
-                    shadow-sm
+                    shadow-[0_0_18px_rgba(34,211,238,0.25)]
                   `
 
                   : `
@@ -96,54 +143,11 @@ export default function TechSection() {
                     text-[#1f2937]
 
                     hover:bg-[#d9dde4]
-                    hover:scale-105
                   `
               }
             `}
           >
             {tech.name}
-
-            {/* TOOLTIP */}
-
-            <div
-              className="
-                pointer-events-none
-
-                absolute
-                left-1/2
-                top-full
-
-                z-20
-
-                mt-2
-
-                min-w-[180px]
-
-                -translate-x-1/2
-
-                rounded-lg
-
-                border
-                border-slate-300
-
-                bg-white
-
-                px-3
-                py-2
-
-                text-xs
-                text-slate-600
-
-                opacity-0
-
-                transition-opacity
-                duration-200
-
-                group-hover:opacity-100
-              "
-            >
-              {tech.libs}
-            </div>
 
           </button>
 
