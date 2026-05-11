@@ -1,0 +1,43 @@
+---
+import { publications } from "../../data/publications";
+import PublicationAccordion from "./PublicationAccordion.jsx";
+---
+
+<section
+  id="publications"
+  class="pt-0 pb-3"
+>
+
+  <!-- HEADER -->
+
+  <div class="mb-4">
+
+    <h2 class="heading-lg mb-3">
+      Publications
+    </h2>
+
+    <p class="text-secondary max-w-2xl">
+      Research papers, conference participation
+      and technical publications.
+    </p>
+
+  </div>
+
+  <!-- ACCORDIONS -->
+
+  <div class="space-y-3">
+
+    {
+      publications.map((publication) => (
+
+        <PublicationAccordion
+          client:load
+          publication={publication}
+        />
+
+      ))
+    }
+
+  </div>
+
+</section>

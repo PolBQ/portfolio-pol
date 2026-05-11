@@ -114,7 +114,7 @@ export default function TechNeuralMap({
         rounded-3xl
 
         bg-transparent
-        mb-[-190px]
+        mb-[-230px]
       "
     >
 
