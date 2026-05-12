@@ -3,72 +3,107 @@ import { motion } from "framer-motion";
 import { categories }
 from "../data/categories";
 
-export default function TechnologyNode({ data }: any) {
+export default function TechnologyNode({
+  data,
+}: any) {
+
+  // =====================================================
+  // MOBILE DETECTION
+  // =====================================================
+
+  const isMobile =
+    typeof window !== "undefined" &&
+    window.innerWidth < 640;
+
+  // =====================================================
+  // CATEGORY COLOR
+  // =====================================================
 
   const color =
     categories[
       data.category as keyof typeof categories
     ]?.color || "#64748b";
 
+  // =====================================================
+  // STATES
+  // =====================================================
+
   const isActive =
-    data.activeCategory === data.category;
+    data.activeCategory ===
+    data.category;
 
   const isDimmed =
     data.activeCategory &&
     !isActive;
 
+  // =====================================================
+  // CATEGORY ROOT NODES
+  // =====================================================
+
   const isCategoryNode =
+
     data.label === "AI" ||
     data.label === "Embedded" ||
     data.label === "IoT" ||
     data.label === "Backend";
 
-  const floatDuration = 4;
-  const floatOffset = 8;
+  // =====================================================
+  // ANIMATION
+  // =====================================================
+
+  const animation = {
+
+    scale: isActive
+      ? 1.03
+      : 1,
+  };
+
+  // =====================================================
+  // COMPONENT
+  // =====================================================
+
   return (
+
     <motion.div
 
-      animate={{
-        y: isActive
-          ? 0
-          : [
-              -floatOffset,
-              floatOffset,
-              -floatOffset,
-            ],
-      }}
+      animate={animation}
 
       transition={{
-        duration: floatDuration,
-        repeat: Infinity,
-        ease: "easeInOut",
+
+        duration: 0.2,
+
+        ease: "easeOut",
       }}
 
-      whileHover={{
-        y: isActive ? 0 : -2,
-      }}
+      whileHover={
+
+        isMobile
+
+          ? {}
+
+          : {
+
+              y: -1,
+            }
+      }
 
       className={`
         flex
         items-center
         justify-center
 
-        rounded-[18px]
+        rounded-full
 
         border
 
-        shadow-sm
-
         transition-all
-        duration-300
+        duration-200
 
         select-none
 
-        backdrop-blur-sm
-
         ${
           isDimmed
-            ? "opacity-25"
+            ? "opacity-35"
             : "opacity-100"
         }
 
@@ -78,45 +113,53 @@ export default function TechnologyNode({ data }: any) {
             ? isActive
 
               ? `
-                px-8
-                py-4
-
-                text-[15px]
-                font-bold
-
-                tracking-[0.14em]
-              `
-
-              : `
-                px-6
+                px-7
                 py-3
 
-                text-[13px]
+                text-[14px]
+                sm:text-[15px]
+
                 font-semibold
 
                 tracking-[0.12em]
               `
 
+              : `
+                px-5
+                py-2.5
+
+                text-[12px]
+                sm:text-[13px]
+
+                font-medium
+
+                tracking-[0.10em]
+              `
+
             : isActive
 
               ? `
-                px-6
-                py-3
+                px-5
+                py-2.5
 
-                text-[13px]
-                font-semibold
+                text-[12px]
+                sm:text-[13px]
 
-                tracking-[0.08em]
+                font-medium
+
+                tracking-[0.06em]
               `
 
               : `
-                px-4
-                py-2
+                px-3.5
+                py-1.5
 
-                text-[11px]
+                text-[10px]
+                sm:text-[11px]
+
                 font-medium
 
-                tracking-[0.04em]
+                tracking-[0.03em]
               `
         }
 
@@ -124,32 +167,41 @@ export default function TechnologyNode({ data }: any) {
           isActive
 
             ? `
-              bg-[#e5e7eb]
-              text-[#111827]
+              bg-cyan-50
+              text-slate-900
             `
 
             : `
-              bg-[#cfd4dc]
-              text-[#1f2937]
+              bg-slate-100
+              text-slate-700
             `
         }
       `}
 
       style={{
-        zIndex: isActive
-          ? 20
-          : 1,
 
-        borderColor: isActive
-          ? color
-          : `${color}55`,
+        zIndex:
+          isActive
+            ? 10
+            : 1,
 
-        boxShadow: isActive
-          ? `0 0 18px ${color}44`
-          : `0 0 4px ${color}22`,
+        borderColor:
+
+          isActive
+            ? color
+            : `${color}55`,
+
+        boxShadow:
+
+          isActive
+
+            ? `0 1px 3px ${color}22`
+            : "0 1px 2px rgba(15,23,42,0.04)",
       }}
     >
+
       {data.label}
+
     </motion.div>
   );
 }

@@ -1,7 +1,10 @@
-import { useState } from "react";
+import {
+  useEffect,
+  useState,
+} from "react";
 
-import TechNeuralMap
-from "./TechNeuralMap";
+import MobileSkillsSection from "./MobileSkillsSection.jsx";
+import TechNeuralMap from "./TechNeuralMap";
 
 const categories = [
 
@@ -67,7 +70,42 @@ export default function TechSection() {
   const [
     activeCategory,
     setActiveCategory,
-  ] = useState(null);
+  ] = useState("ai");
+
+  const [
+    isMobile,
+    setIsMobile,
+  ] = useState(false);
+
+  // =====================================================
+  // RESPONSIVE
+  // =====================================================
+
+  useEffect(() => {
+
+    const handleResize = () => {
+
+      setIsMobile(
+        window.innerWidth < 640
+      );
+    };
+
+    handleResize();
+
+    window.addEventListener(
+      "resize",
+      handleResize
+    );
+
+    return () => {
+
+      window.removeEventListener(
+        "resize",
+        handleResize
+      );
+    };
+
+  }, []);
 
   return (
 
@@ -82,7 +120,7 @@ export default function TechSection() {
 
           gap-3
 
-          mb-2
+          mb-4
         "
       >
 
@@ -104,9 +142,9 @@ export default function TechSection() {
               relative
 
               px-5
-              py-2
+              py-2.5
 
-              rounded-[18px]
+              rounded-full
 
               border
 
@@ -116,37 +154,37 @@ export default function TechSection() {
               tracking-[0.08em]
 
               transition-all
-              duration-300
+              duration-200
 
               select-none
 
-              hover:scale-105
+              active:scale-[0.98]
 
               ${
                 activeCategory === tech.category
 
                   ? `
-                    bg-[#e5e7eb]
-
                     border-cyan-400
 
-                    text-[#111827]
+                    bg-cyan-50
 
-                    shadow-[0_0_18px_rgba(34,211,238,0.25)]
+                    text-slate-900
                   `
 
                   : `
-                    bg-[#cfd4dc]
+                    border-slate-300
 
-                    border-[#1f2937]
+                    bg-slate-100
 
-                    text-[#1f2937]
+                    text-slate-700
 
-                    hover:bg-[#d9dde4]
+                    hover:border-cyan-300
+                    hover:bg-slate-50
                   `
               }
             `}
           >
+
             {tech.name}
 
           </button>
@@ -155,11 +193,25 @@ export default function TechSection() {
 
       </div>
 
-      {/* NEURAL MAP */}
+      {/* SKILLS */}
 
-      <TechNeuralMap
-        activeCategory={activeCategory}
-      />
+      {
+        isMobile
+
+          ? (
+
+            <MobileSkillsSection
+              activeCategory={activeCategory}
+            />
+          )
+
+          : (
+
+            <TechNeuralMap
+              activeCategory={activeCategory}
+            />
+          )
+      }
 
     </section>
   );

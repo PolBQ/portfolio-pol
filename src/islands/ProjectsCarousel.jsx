@@ -70,44 +70,6 @@ export default function ProjectsCarousel() {
       "
     >
 
-      {/* AMBIENT LIGHT */}
-
-      <div
-        className="
-          pointer-events-none
-
-          absolute
-          inset-0
-
-          bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.05),transparent_65%)]
-        "
-      />
-
-      {/* SECONDARY GLOW */}
-
-      <div
-        className="
-          pointer-events-none
-
-          absolute
-
-          left-1/2
-          top-1/2
-
-          h-[420px]
-          w-[420px]
-
-          -translate-x-1/2
-          -translate-y-1/2
-
-          rounded-full
-
-          bg-cyan-400/10
-
-          blur-3xl
-        "
-      />
-
       <Splide
 
         className="pb-0"
@@ -120,46 +82,31 @@ export default function ProjectsCarousel() {
 
           focus: "center",
 
-          perPage: 1.35,
+          perPage: 1.2,
 
           perMove: 1,
 
           gap: "1rem",
 
-          padding: "10%",
+          padding: "8%",
 
-          speed: 700,
+          speed: 600,
 
           pagination: false,
 
           arrows: true,
 
-          drag: "free",
+          drag: true,
 
           snap: true,
 
-          flickPower: 120,
-
-          flickMaxPages: 1,
-
-          updateOnMove: true,
-
           trimSpace: false,
-
-          omitEnd: true,
 
           breakpoints: {
 
-            1280: {
-
-              perPage: 1.15,
-
-              padding: "6%",
-            },
-
             1024: {
 
-              perPage: 1.1,
+              perPage: 1.05,
 
               padding: "4%",
             },
@@ -171,8 +118,6 @@ export default function ProjectsCarousel() {
               padding: "1rem",
 
               gap: "0.8rem",
-
-              drag: true,
             },
           },
         }}
@@ -191,25 +136,24 @@ export default function ProjectsCarousel() {
 
                   overflow-hidden
 
-                  rounded-[30px]
+                  rounded-[28px]
 
                   border
-                  border-white/10
+                  border-slate-300
 
-                  bg-[#0f172a]/70
-                  backdrop-blur-xl
+                  bg-slate-100
+
+                  shadow-sm
 
                   min-h-[220px]
                   sm:min-h-[240px]
                   lg:min-h-[260px]
 
                   transition-all
-                  duration-700
+                  duration-300
 
-                  hover:border-cyan-400/30
-                  hover:-translate-y-1
-
-                  hover:shadow-[0_20px_80px_rgba(34,211,238,0.14)]
+                  hover:border-cyan-300
+                  hover:-translate-y-[2px]
                 "
               >
 
@@ -236,8 +180,7 @@ export default function ProjectsCarousel() {
                       z-10
 
                       bg-gradient-to-t
-                      from-[#020617]/80
-                      via-[#020617]/10
+                      from-slate-900/55
                       to-transparent
                     "
                   />
@@ -254,9 +197,9 @@ export default function ProjectsCarousel() {
                       object-cover
 
                       transition-transform
-                      duration-700
+                      duration-500
 
-                      group-hover:scale-105
+                      group-hover:scale-[1.02]
                     "
                   />
 
@@ -270,10 +213,10 @@ export default function ProjectsCarousel() {
                     flex-col
                     justify-between
 
-                    gap-3
+                    gap-4
 
                     px-5
-                    py-4
+                    py-5
                   "
                 >
 
@@ -284,13 +227,13 @@ export default function ProjectsCarousel() {
                     <h3
                       className="
                         text-lg
-                        lg:text-[26px]
+                        lg:text-[24px]
 
                         font-semibold
 
                         tracking-[-0.03em]
 
-                        text-white
+                        text-slate-900
                       "
                     >
                       {project.title}
@@ -300,14 +243,14 @@ export default function ProjectsCarousel() {
                       className="
                         mt-3
 
-                        max-w-[90%]
+                        max-w-[95%]
 
                         text-[14px]
                         lg:text-[15px]
 
                         leading-relaxed
 
-                        text-slate-400
+                        text-slate-600
                       "
                     >
                       {project.description}
@@ -338,17 +281,19 @@ export default function ProjectsCarousel() {
                               rounded-full
 
                               border
-                              border-cyan-400/20
+                              border-cyan-200
 
-                              bg-cyan-400/10
+                              bg-cyan-50
 
                               px-3
                               py-1
 
                               text-[11px]
+                              font-medium
+
                               tracking-wide
 
-                              text-cyan-200
+                              text-slate-700
                             "
                           >
                             {tech}
@@ -378,9 +323,7 @@ export default function ProjectsCarousel() {
 
         .splide__track {
           overflow: visible;
-
           padding-bottom: 0 !important;
-
           cursor: grab;
         }
 
@@ -394,34 +337,25 @@ export default function ProjectsCarousel() {
 
         .splide__slide {
 
-          opacity: 0.18;
-
-          filter: blur(0.8px);
+          opacity: 0.45;
 
           transition:
-            opacity 0.5s ease,
-            filter 0.5s ease,
-            transform 0.5s ease;
-
-          transform-origin: center center;
+            opacity 0.35s ease,
+            transform 0.35s ease;
         }
 
         .splide__slide.is-active {
 
           opacity: 1;
-
-          filter: blur(0px);
         }
 
         .splide__arrow {
 
           background:
-            rgba(15, 23, 42, 0.72);
+            #f8fafc;
 
           border:
-            1px solid rgba(255,255,255,0.08);
-
-          backdrop-filter: blur(12px);
+            1px solid #cbd5e1;
 
           width: 42px;
           height: 42px;
@@ -429,20 +363,23 @@ export default function ProjectsCarousel() {
           opacity: 1;
 
           transition:
-            all 0.3s ease;
+            all 0.2s ease;
+
+          box-shadow:
+            0 1px 2px rgba(15,23,42,0.06);
         }
 
         .splide__arrow:hover {
 
-          background:
-            rgba(34,211,238,0.16);
-
           border-color:
-            rgba(34,211,238,0.3);
+            #67e8f9;
+
+          background:
+            #ecfeff;
         }
 
         .splide__arrow svg {
-          fill: white;
+          fill: #0f172a;
         }
 
       `}</style>

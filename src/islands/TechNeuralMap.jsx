@@ -136,10 +136,13 @@ export default function TechNeuralMap({
 
       <div
         className="
+          hidden
+          sm:block
+
           absolute
           inset-0
 
-          opacity-[0.05]
+          opacity-[0.06]
 
           bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)]
 
@@ -152,6 +155,7 @@ export default function TechNeuralMap({
       {/* FLOW SYSTEM */}
 
       <ReactFlow
+        onlyRenderVisibleElements
 
         nodes={nodes}
         edges={edges}

@@ -5,8 +5,14 @@ import { asset } from "../../lib/assets";
 <section
   class="
     container-base
+
     relative
     overflow-hidden
+
+    rounded-b-[25px]
+
+    border
+    border-slate-800/80
   "
 >
 
@@ -54,17 +60,18 @@ import { asset } from "../../lib/assets";
       lg:flex-row
 
       items-center
-      lg:items-center
-
       justify-between
 
       gap-8
-      lg:gap-16
+      lg:gap-14
 
-      py-10
-      lg:py-0
+      px-6
+      lg:px-10
 
-      min-h-[235px]
+      py-8
+      lg:py-9
+
+      min-h-[220px]
     "
   >
 
@@ -82,8 +89,8 @@ import { asset } from "../../lib/assets";
         text-center
         sm:text-left
 
-        gap-5
-        lg:gap-6
+        gap-6
+        lg:gap-7
 
         w-full
         lg:w-auto
@@ -95,17 +102,24 @@ import { asset } from "../../lib/assets";
       <img
         src={asset("/images/me/PolBallesteros.jpeg")}
         alt="Pol Ballesteros"
+
         class="
           w-24
           h-24
+
           lg:w-28
           lg:h-28
 
           rounded-full
           object-cover
 
-          ring-2
-          ring-blue-500/30
+          border
+          border-slate-700
+
+          ring-1
+          ring-blue-500/20
+
+          shadow-[0_6px_18px_rgba(2,6,23,0.35)]
 
           flex-shrink-0
         "
@@ -113,7 +127,13 @@ import { asset } from "../../lib/assets";
 
       <!-- TEXT -->
 
-      <div>
+      <div
+        class="
+          max-w-[620px]
+        "
+      >
+
+        <!-- LABEL -->
 
         <p
           class="
@@ -125,27 +145,33 @@ import { asset } from "../../lib/assets";
             text-[10px]
             sm:text-[11px]
 
-            text-slate-300
+            font-medium
+
+            text-slate-400
           "
         >
           Artificial Intelligence • Embedded Systems • Research
         </p>
 
+        <!-- TITLE -->
+
         <h1
           class="
-            text-2xl
-            sm:text-3xl
-            lg:text-4xl
+            text-[1.8rem]
+            sm:text-[2.2rem]
+            lg:text-[2.6rem]
 
             font-semibold
 
-            leading-[1.05]
-            tracking-tight
+            leading-[1]
+
+            tracking-[-0.045em]
 
             text-slate-100
           "
         >
-          Pol Alexander<br />
+          Pol Alexander
+          <br />
           Ballesteros Quiroga
         </h1>
 
@@ -168,7 +194,7 @@ import { asset } from "../../lib/assets";
       "
     >
 
-      <!-- CTA -->
+      <!-- BUTTONS -->
 
       <div
         class="
@@ -179,73 +205,81 @@ import { asset } from "../../lib/assets";
           w-full
           sm:w-auto
 
-          gap-3
+          gap-2.5
         "
       >
 
+        <!-- PRIMARY -->
+
         <a
           href={asset("/projects")}
-          class="
-            bg-accent
-            hover:bg-accent-hover
 
-            transition
-            duration-150
-            ease-out
-            transform
-            hover:-translate-y-0.5
-            active:translate-y-0.5
-            active:scale-95
+          class="
+            inline-flex
+            items-center
+            justify-center
+
+            rounded-full
+
+            border
+            border-blue-500/20
+
+            bg-blue-500/10
 
             px-5
-            py-3
-
-            rounded-xl
+            py-2.5
 
             text-sm
             font-medium
-            text-white
 
-            text-center
-            focus:outline-none
-            focus:ring-2
-            focus:ring-blue-400/40
+            text-slate-100
+
+            backdrop-blur-sm
+
+            transition-all
+            duration-200
+
+            hover:border-blue-400/40
+            hover:bg-blue-500/20
           "
         >
           View Projects
         </a>
 
+        <!-- SECONDARY -->
+
         <a
           href={asset("/documents/CV_PolBallesterosQ.pdf")}
           target="_blank"
+
           class="
+            inline-flex
+            items-center
+            justify-center
+
+            rounded-full
+
             border
-            border-border
+            border-slate-700
 
-            hover:border-accent
-            hover:bg-slate-900/10
-
-            transition
-            duration-150
-            ease-out
-            transform
-            hover:-translate-y-0.5
-            active:translate-y-0.5
-            active:scale-95
+            bg-slate-900/40
 
             px-5
-            py-3
-
-            rounded-xl
+            py-2.5
 
             text-sm
             font-medium
-            text-slate-100
 
-            text-center
-            focus:outline-none
-            focus:ring-2
-            focus:ring-blue-400/30
+            text-slate-300
+
+            backdrop-blur-sm
+
+            transition-all
+            duration-200
+
+            hover:border-cyan-400/30
+            hover:bg-slate-900/60
+            hover:text-slate-100
           "
         >
           Download CV

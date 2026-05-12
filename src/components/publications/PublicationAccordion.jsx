@@ -8,6 +8,10 @@ export default function PublicationAccordion({ publication }) {
 
   const [height, setHeight] = useState(0);
 
+  // =====================================================
+  // HEIGHT CONTROL
+  // =====================================================
+
   useEffect(() => {
 
     if (!contentRef.current) return;
@@ -23,6 +27,10 @@ export default function PublicationAccordion({ publication }) {
     }
 
   }, [open]);
+
+  // =====================================================
+  // RESIZE
+  // =====================================================
 
   useEffect(() => {
 
@@ -50,8 +58,19 @@ export default function PublicationAccordion({ publication }) {
       className="
         relative
 
-        card-base
         overflow-hidden
+
+        rounded-2xl
+
+        border
+        border-slate-300
+
+        bg-slate-100
+
+        shadow-sm
+
+        transition-all
+        duration-200
       "
     >
 
@@ -66,7 +85,6 @@ export default function PublicationAccordion({ publication }) {
 
         className="
           relative
-          z-10
 
           w-full
 
@@ -81,7 +99,7 @@ export default function PublicationAccordion({ publication }) {
 
           text-left
 
-          hover:bg-slate-900/20
+          hover:bg-slate-200/60
 
           transition-colors
           duration-200
@@ -97,9 +115,9 @@ export default function PublicationAccordion({ publication }) {
               text-sm
               md:text-base
 
-              font-medium
+              font-semibold
 
-              text-slate-100
+              text-slate-900
 
               leading-snug
             "
@@ -121,10 +139,12 @@ export default function PublicationAccordion({ publication }) {
           "
         >
 
+          {/* YEAR */}
+
           <span
             className="
               text-sm
-              text-muted
+              text-slate-500
             "
           >
             {publication.year}
@@ -134,12 +154,10 @@ export default function PublicationAccordion({ publication }) {
 
           <div
             className={`
-              text-muted
+              text-slate-500
 
               transition-transform
-              duration-500
-
-              ease-[cubic-bezier(0.22,1,0.36,1)]
+              duration-300
 
               ${open ? "rotate-180" : ""}
             `}
@@ -175,15 +193,10 @@ export default function PublicationAccordion({ publication }) {
         }}
 
         className="
-          relative
-          z-0
-
           overflow-hidden
 
           transition-all
-          duration-500
-
-          ease-[cubic-bezier(0.22,1,0.36,1)]
+          duration-300
         "
       >
 
@@ -192,20 +205,18 @@ export default function PublicationAccordion({ publication }) {
 
           className={`
             border-t
-            border-slate-800
+            border-slate-300
 
             px-5
             py-5
 
             transition-all
-            duration-500
-
-            ease-[cubic-bezier(0.22,1,0.36,1)]
+            duration-300
 
             ${
               open
                 ? "opacity-100 translate-y-0"
-                : "opacity-0 -translate-y-2"
+                : "opacity-0 -translate-y-1"
             }
           `}
         >
@@ -220,9 +231,10 @@ export default function PublicationAccordion({ publication }) {
                 className="
                   text-xs
                   uppercase
+
                   tracking-[0.12em]
 
-                  text-muted
+                  text-slate-500
 
                   mb-2
                 "
@@ -230,7 +242,12 @@ export default function PublicationAccordion({ publication }) {
                 Conference
               </p>
 
-              <p className="text-sm text-slate-300">
+              <p
+                className="
+                  text-sm
+                  text-slate-700
+                "
+              >
                 {publication.conference}
               </p>
 
@@ -244,9 +261,10 @@ export default function PublicationAccordion({ publication }) {
                 className="
                   text-xs
                   uppercase
+
                   tracking-[0.12em]
 
-                  text-muted
+                  text-slate-500
 
                   mb-2
                 "
@@ -254,7 +272,12 @@ export default function PublicationAccordion({ publication }) {
                 Location
               </p>
 
-              <p className="text-sm text-slate-300">
+              <p
+                className="
+                  text-sm
+                  text-slate-700
+                "
+              >
                 {publication.location}
               </p>
 
@@ -268,9 +291,10 @@ export default function PublicationAccordion({ publication }) {
                 className="
                   text-xs
                   uppercase
+
                   tracking-[0.12em]
 
-                  text-muted
+                  text-slate-500
 
                   mb-2
                 "
@@ -281,7 +305,8 @@ export default function PublicationAccordion({ publication }) {
               <p
                 className="
                   text-sm
-                  text-slate-300
+                  text-slate-700
+
                   break-all
                 "
               >
@@ -296,7 +321,9 @@ export default function PublicationAccordion({ publication }) {
               className="
                 flex
                 flex-wrap
+
                 gap-3
+
                 pt-1
               "
             >
@@ -307,7 +334,34 @@ export default function PublicationAccordion({ publication }) {
                     href={publication.links.ieee}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="button-secondary text-sm"
+
+                    className="
+                      inline-flex
+                      items-center
+                      justify-center
+
+                      rounded-xl
+
+                      border
+                      border-slate-300
+
+                      bg-slate-50
+
+                      px-4
+                      py-2
+
+                      text-sm
+                      font-medium
+
+                      text-slate-700
+
+                      transition-all
+                      duration-200
+
+                      hover:border-cyan-400
+                      hover:bg-cyan-50
+                      hover:text-slate-900
+                    "
                   >
                     IEEE
                   </a>
@@ -320,7 +374,34 @@ export default function PublicationAccordion({ publication }) {
                     href={publication.links.pdf}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="button-secondary text-sm"
+
+                    className="
+                      inline-flex
+                      items-center
+                      justify-center
+
+                      rounded-xl
+
+                      border
+                      border-slate-300
+
+                      bg-slate-50
+
+                      px-4
+                      py-2
+
+                      text-sm
+                      font-medium
+
+                      text-slate-700
+
+                      transition-all
+                      duration-200
+
+                      hover:border-cyan-400
+                      hover:bg-cyan-50
+                      hover:text-slate-900
+                    "
                   >
                     PDF
                   </a>
@@ -333,7 +414,34 @@ export default function PublicationAccordion({ publication }) {
                     href={publication.links.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="button-secondary text-sm"
+
+                    className="
+                      inline-flex
+                      items-center
+                      justify-center
+
+                      rounded-xl
+
+                      border
+                      border-slate-300
+
+                      bg-slate-50
+
+                      px-4
+                      py-2
+
+                      text-sm
+                      font-medium
+
+                      text-slate-700
+
+                      transition-all
+                      duration-200
+
+                      hover:border-cyan-400
+                      hover:bg-cyan-50
+                      hover:text-slate-900
+                    "
                   >
                     GitHub
                   </a>
